@@ -5,7 +5,7 @@ In database systems, ACID (Atomicity, Consistency, Isolation, Durability) refers
 ## ACID Definition ##
 ACID is an acronym that stands for Atomicity, Consistency, Isolation, Durability. These are explained below.
 
-"+"**Atomicity**
++ **Atomicity**
 Atomicity means that you guarantee that either all of the transaction succeeds or none of it does. You don’t get part of it succeeding and part of it not. If one part of the transaction fails, the whole transaction fails. With atomicity, it’s either “all or nothing”.
 
 "+"**Consistency**
