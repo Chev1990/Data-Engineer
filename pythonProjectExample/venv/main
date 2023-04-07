@@ -1,0 +1,3 @@
+*** Variables ***
+${DBHost_ConnectionString} Driver='SQL Server', Server='XPESMALW0018\\(localdb)\MyInstance', Database='TRN', Trusted_Connection='yes', UID='TestDQA', PWD='Password123'
+

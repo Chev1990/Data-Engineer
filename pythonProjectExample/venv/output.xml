@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20230405 16:16:53.459" rpa="false" schemaversion="3">
+<suite id="s1" name="Example" source="C:\Users\ivan\pythonProjectExample\venv\example.robot">
+<test id="s1-t1" name="Screenshot and Log Test Case" line="6">
+<kw name="Take Screenshot and Log Text">
+<arg>${NAME}</arg>
+<kw name="Take Screenshot" library="Screenshot">
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<msg timestamp="20230405 16:16:53.487" level="WARN">Taking screenshot failed: Taking screenshots is not supported on this platform by default. See library documentation for details.
+Make sure tests are run with a physical or virtual display.</msg>
+<msg timestamp="20230405 16:16:53.488" level="INFO" html="true">&lt;a href="screenshot_1.jpg"&gt;&lt;img src="screenshot_1.jpg" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20230405 16:16:53.486" endtime="20230405 16:16:53.488"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The screenshot was taken by ${NAME}...</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230405 16:16:53.488" level="INFO">The screenshot was taken by John...</msg>
+<status status="PASS" starttime="20230405 16:16:53.488" endtime="20230405 16:16:53.488"/>
+</kw>
+<status status="PASS" starttime="20230405 16:16:53.486" endtime="20230405 16:16:53.489"/>
+</kw>
+<status status="PASS" starttime="20230405 16:16:53.485" endtime="20230405 16:16:53.489"/>
+</test>
+<status status="PASS" starttime="20230405 16:16:53.461" endtime="20230405 16:16:53.490"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Example">Example</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230405 16:16:53.487" level="WARN">Taking screenshot failed: Taking screenshots is not supported on this platform by default. See library documentation for details.
+Make sure tests are run with a physical or virtual display.</msg>
+</errors>
+</robot>

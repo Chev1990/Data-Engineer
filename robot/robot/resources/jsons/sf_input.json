@@ -1,0 +1,4 @@
+{
+  "glueDatabase": "legislators",
+  "glueTables": "persons_json, organizations_json"
+}
