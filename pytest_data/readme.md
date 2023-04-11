@@ -13,5 +13,8 @@ pip install -r requirements.txt
 To generate a HTML report for tests, we have to install a plugin with the command
 ```bash
 pip install pytest-html
+python venv/test_data.py
+pytest -v -s venv/ --html=report.html
+pytest venv/ --html-report=./report --title='PYTEST REPORT'
 ```
 
