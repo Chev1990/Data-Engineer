@@ -5,8 +5,8 @@ Project python Pytest is automated test cases for checking of data in following 
 ### Test Automation Framework
 This project uses the pytest framework,pyodbc,pymssql drivers and MS SQL DB.
 ### Create virtual environment for tests execution
-'''bash
+```bash
 pip install -r requirements.txt
-bash'''
+```
 
 
