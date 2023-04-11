@@ -10,7 +10,8 @@ Use the driver list and pytest version from requirements.txt. to run tests.
 pip install -r requirements.txt
 ```
 ### Report
+To generate a HTML report for tests, we have to install a plugin with the command
 ```bash
-pip install -r requirements.txt
+pip install pytest-html
 ```
 
