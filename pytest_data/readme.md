@@ -14,7 +14,7 @@ To generate a HTML report for tests, we have to install a plugin with the comman
 ```bash
 pip install pytest-html
 ```
-Execute of tests
+Execute of tests and generate a HTML report
 ```bash
 python venv/test_data.py
 pytest -v -s venv/ --html=report.html
