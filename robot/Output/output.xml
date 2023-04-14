@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.3 (Python 3.11.2 on win32)" generated="20230413 18:47:35.639" rpa="false" schemaversion="2">
+<suite id="s1" name="Robot Test" source="C:\Users\Ekaterina_Chudinova.EPAM\Desktop\Desktop\Git\Data-Engineer\robot\robot_test.robot">
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary" type="SETUP">
+<arg>pyodbc</arg>
+<arg>${DBHost_ConnectionString}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_custom_param_string`.</doc>
+<msg timestamp="20230413 18:47:35.731" level="INFO">Executing : Connect To Database Using Custom Params : pyodbc.connect(db_api_2.connect('DRIVER={ODBC Driver 17 for SQL Server};Server=(localdb)\MyInstance;Database=TRN;integrated security=true')) </msg>
+<status status="PASS" starttime="20230413 18:47:35.723" endtime="20230413 18:47:35.842"/>
+</kw>
+<test id="s1-t1" name="Test 1. Employees: Verify Query - Row Count employees table">
+<kw name="Query" library="DatabaseLibrary">
+<var>${output}</var>
+<arg>SELECT COUNT(*) FROM hr.employees;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230413 18:47:35.845" level="INFO">Executing : Query  |  SELECT COUNT(*) FROM hr.employees; </msg>
+<msg timestamp="20230413 18:47:35.850" level="INFO">${output} = [(40, )]</msg>
+<status status="PASS" starttime="20230413 18:47:35.844" endtime="20230413 18:47:35.850"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230413 18:47:35.851" level="INFO">[(40, )]</msg>
+<status status="PASS" starttime="20230413 18:47:35.851" endtime="20230413 18:47:35.851"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${output}</arg>
+<arg>[(40, )]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230413 18:47:35.852" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20230413 18:47:35.852" endtime="20230413 18:47:35.852"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: Count the number of rows in table('employees') using count(*)
+
+*Expected result:* the count of rows in table 'employees' equals 40</doc>
+<tag>AUTOTEST-001: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.843" endtime="20230413 18:47:35.853"/>
+</test>
+<test id="s1-t2" name="Test 2. Departments: Verify a Table Exists">
+<kw name="Table Must Exist" library="DatabaseLibrary">
+<arg>departments</arg>
+<doc>Check if the table given exists in the database. Set optional input `sansTran` to True to run command without an
+explicit transaction commit or rollback.</doc>
+<msg timestamp="20230413 18:47:35.858" level="INFO">Executing : Table Must Exist  |  departments </msg>
+<msg timestamp="20230413 18:47:35.858" level="INFO">Executing : Row Count  |  SELECT * FROM information_schema.tables WHERE table_name='departments' </msg>
+<status status="PASS" starttime="20230413 18:47:35.858" endtime="20230413 18:47:35.891"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: Check the table('departments') is in this DB
+
+*Expected result:* the table 'departments' exists in DB</doc>
+<tag>AUTOTEST-002: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.856" endtime="20230413 18:47:35.892"/>
+</test>
+<test id="s1-t3" name="Test 3. Employees: Verify the average salary of employees is equal to a specified value">
+<kw name="Query" library="DatabaseLibrary">
+<var>${output}</var>
+<arg>select left(avg(salary),4) from hr.employees;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230413 18:47:35.896" level="INFO">Executing : Query  |  select left(avg(salary),4) from hr.employees; </msg>
+<msg timestamp="20230413 18:47:35.899" level="INFO">${output} = [('8060', )]</msg>
+<status status="PASS" starttime="20230413 18:47:35.896" endtime="20230413 18:47:35.899"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230413 18:47:35.900" level="INFO">[('8060', )]</msg>
+<status status="PASS" starttime="20230413 18:47:35.900" endtime="20230413 18:47:35.900"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${output}</arg>
+<arg>[('8060', )]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230413 18:47:35.904" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20230413 18:47:35.904" endtime="20230413 18:47:35.904"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: Calculate the average salary of employees using avg(*)
+
+*Expected result:* the average salary of employees = 8060</doc>
+<tag>AUTOTEST-003: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.895" endtime="20230413 18:47:35.905"/>
+</test>
+<test id="s1-t4" name="Test 4. Jobs: Verify duplicate rows are not in table jobs">
+<kw name="Query" library="DatabaseLibrary">
+<var>${output}</var>
+<arg>select job_id, job_title, min_salary,max_salary, count(*) cnt from hr.jobs group by job_id, job_title, min_salary,max_salary having count(*)&gt;1;</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230413 18:47:35.912" level="INFO">Executing : Query  |  select job_id, job_title, min_salary,max_salary, count(*) cnt from hr.jobs group by job_id, job_title, min_salary,max_salary having count(*)&gt;1; </msg>
+<msg timestamp="20230413 18:47:35.916" level="INFO">${output} = []</msg>
+<status status="PASS" starttime="20230413 18:47:35.911" endtime="20230413 18:47:35.916"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230413 18:47:35.917" level="INFO">[]</msg>
+<status status="PASS" starttime="20230413 18:47:35.917" endtime="20230413 18:47:35.918"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${output}</arg>
+<arg>[]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230413 18:47:35.920" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20230413 18:47:35.919" endtime="20230413 18:47:35.920"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: Count the number of duplicate rows in jobs table
+
+*Expected result:* count of rows in table &gt; 0</doc>
+<tag>AUTOTEST-004: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.910" endtime="20230413 18:47:35.921"/>
+</test>
+<test id="s1-t5" name="Test 5. Jobs: Check column value (min_salary) for job_title = 'Public Accountant'">
+<kw name="Query" library="DatabaseLibrary">
+<var>${output}</var>
+<arg>select left(min_salary,4) from hr.jobs where job_title = 'Public Accountant';</arg>
+<doc>Uses the input `selectStatement` to query for the values that will be returned as a list of tuples. Set optional
+input `sansTran` to True to run command without an explicit transaction commit or rollback.
+Set optional input `returnAsDict` to True to return values as a list of dictionaries.</doc>
+<msg timestamp="20230413 18:47:35.928" level="INFO">Executing : Query  |  select left(min_salary,4) from hr.jobs where job_title = 'Public Accountant'; </msg>
+<msg timestamp="20230413 18:47:35.930" level="INFO">${output} = [('4200', )]</msg>
+<status status="PASS" starttime="20230413 18:47:35.927" endtime="20230413 18:47:35.931"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230413 18:47:35.932" level="INFO">[('4200', )]</msg>
+<status status="PASS" starttime="20230413 18:47:35.931" endtime="20230413 18:47:35.932"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${output}</arg>
+<arg>[('4200', )]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230413 18:47:35.934" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20230413 18:47:35.934" endtime="20230413 18:47:35.935"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: min_salary for specified job_title
+
+*Expected result:* min salary of specified job_title is equal to 4200</doc>
+<tag>AUTOTEST-005: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.926" endtime="20230413 18:47:35.935"/>
+</test>
+<test id="s1-t6" name="Test 6. Regions: Check If Exists In DB - region Europe">
+<kw name="Check If Exists In Database" library="DatabaseLibrary">
+<arg>SELECT region_id FROM hr.regions WHERE region_name = 'Europe';</arg>
+<doc>Check if any row would be returned by given the input `selectStatement`. If there are no results, then this will
+throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction
+commit or rollback.</doc>
+<msg timestamp="20230413 18:47:35.944" level="INFO">Executing : Check If Exists In Database  |  SELECT region_id FROM hr.regions WHERE region_name = 'Europe'; </msg>
+<msg timestamp="20230413 18:47:35.944" level="INFO">Executing : Query  |  SELECT region_id FROM hr.regions WHERE region_name = 'Europe'; </msg>
+<status status="PASS" starttime="20230413 18:47:35.944" endtime="20230413 18:47:35.947"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: check thst region Europe Exists In DB
+
+*Expected result:* region Europe Exists In DB with id = 1</doc>
+<tag>AUTOTEST-006: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.939" endtime="20230413 18:47:35.950"/>
+</test>
+<test id="s1-t7" name="Test 6. Regions: Check If Exists In DB - region Europe">
+<kw name="Check If Exists In Database" library="DatabaseLibrary">
+<arg>SELECT region_id FROM hr.regions WHERE region_name = 'Europe';</arg>
+<doc>Check if any row would be returned by given the input `selectStatement`. If there are no results, then this will
+throw an AssertionError. Set optional input `sansTran` to True to run command without an explicit transaction
+commit or rollback.</doc>
+<msg timestamp="20230413 18:47:35.959" level="INFO">Executing : Check If Exists In Database  |  SELECT region_id FROM hr.regions WHERE region_name = 'Europe'; </msg>
+<msg timestamp="20230413 18:47:35.959" level="INFO">Executing : Query  |  SELECT region_id FROM hr.regions WHERE region_name = 'Europe'; </msg>
+<status status="PASS" starttime="20230413 18:47:35.959" endtime="20230413 18:47:35.960"/>
+</kw>
+<doc>*Test Steps:*
+1. Connect to DB;
+2. Execute query: check thst region Europe Exists In DB
+
+*Expected result:* region Europe Exists In DB with id = 1</doc>
+<tag>AUTOTEST-006: []</tag>
+<status status="PASS" starttime="20230413 18:47:35.957" endtime="20230413 18:47:35.961"/>
+</test>
+<kw name="Disconnect From Database" library="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20230413 18:47:35.964" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" starttime="20230413 18:47:35.964" endtime="20230413 18:47:35.965"/>
+</kw>
+<status status="PASS" starttime="20230413 18:47:35.642" endtime="20230413 18:47:35.965"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">AUTOTEST-001: []</stat>
+<stat pass="1" fail="0" skip="0">AUTOTEST-002: []</stat>
+<stat pass="1" fail="0" skip="0">AUTOTEST-003: []</stat>
+<stat pass="1" fail="0" skip="0">AUTOTEST-004: []</stat>
+<stat pass="1" fail="0" skip="0">AUTOTEST-005: []</stat>
+<stat pass="2" fail="0" skip="0">AUTOTEST-006: []</stat>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Robot Test">Robot Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230413 18:47:35.952" level="WARN">Multiple test cases with name 'Test 6. Regions: Check If Exists In DB - region Europe' executed in test suite 'Robot Test'.</msg>
+</errors>
+</robot>
