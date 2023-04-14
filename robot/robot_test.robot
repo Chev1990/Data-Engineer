@@ -70,12 +70,3 @@ Test 6. Regions: Check If Exists In DB - region Europe
     ...
     ...   *Expected result:* region Europe Exists In DB with id = 1
     Check If Exists In Database    SELECT region_id FROM hr.regions WHERE region_name = 'Europe';
-Test 6. Regions: Check If Exists In DB - region Europe
-    [Tags]  AUTOTEST-006: []
-    [documentation]
-    ...  *Test Steps:*
-    ...  1. Connect to DB;
-    ...  2. Execute query: check thst region Europe Exists In DB
-    ...
-    ...   *Expected result:* region Europe Exists In DB with id = 1
-    Check If Exists In Database    SELECT region_id FROM hr.regions WHERE region_name = 'Europe';
