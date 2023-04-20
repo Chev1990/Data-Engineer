@@ -4,7 +4,7 @@ import pytest
 import math
 
 def connectdb():
-    conndb = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};Server=(localdb)\\MyInstance;Database=TRN;integrated security=true')
+    conndb = pyodbc.connect('DRIVER={SQL Server};Server=(localdb)\\MyInstance;Database=TRN;integrated security=true')
     return conndb
 """
     AUTOTEST-001: [tablename] completeness
