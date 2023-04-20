@@ -5,7 +5,7 @@ import math
 
 def connectdb():
     #conndb = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};Server=(localdb)\\MyInstance;Database=TRN;integrated security=true')
-    conndb = pyodbc.connect('DRIVER={SQL Server};UID=TestDQA;PWD=Password12345;Database=TRN;Trusted_Connection=yes;Server=XPESMALW0018\\(localdb);')
+    conndb = pyodbc.connect('DRIVER={ODBC Driver 18 for SQL Server};UID=TestDQA;PWD=Password12345;Database=TRN;Trusted_Connection=yes;Server=XPESMALW0018\\(localdb);')
     #conndb = pymssql.connect(server='(localdb)\MyInstance',port = 1433, user = 'TestDQA',password = "Password12345", database='TRN')(localdb)\\MyInstance
     return conndb
 """
