@@ -6,7 +6,7 @@ Suite Setup     Connect To Database Using Custom Params   pyodbc   ${DBHost_Conn
 Suite Teardown  Disconnect From Database
 
 *** Variables ***
-${DBHost_ConnectionString}    'DRIVER={ODBC Driver 17 for SQL Server};Server=(localdb)\\MyInstance;Database=TRN;integrated security=true'
+${DBHost_ConnectionString}    'DRIVER={ODBC Driver 18 for SQL Server};Server=(localdb)\\MyInstance;Database=TRN;integrated security=true'
 *** Test Cases ***
 Test 1. Employees: Verify Query - Row Count employees table
     [Tags]    AUTOTEST-001: []
