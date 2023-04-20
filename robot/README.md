@@ -1,23 +1,18 @@
 # Description of project
-Project python Pytest is automated test cases for checking of data in following tables: jobs,employees,departments.
+Project Robot framework(RF) is automated test cases for checking of data in following tables: jobs,employees,departments.
 
 ## Environment
 ### Test Automation Framework
-This project uses the pytest framework,pyodbc,pymssql drivers and MS SQL DB.
+This project uses the Robot framework,pyodbc,pymssql drivers and MS SQL DB.
 ### Create virtual environment for tests execution
-Use the driver list and pytest version from requirements.txt. to run tests.
+#### Installing dependencies:
 ```bash
 pip install -r requirements.txt
+pip install robotframework
 ```
-### Report
-To generate a HTML report for tests, we have to install a plugin with the command
+##### Run the tests and generate a HTML report
+In the Output folder you will find reports with test details log.html and report.html.
 ```bash
-pip install pytest-html
-```
-Run the tests and generate a HTML report
-```bash
-python venv/test_data.py
-pytest -v -s venv/ --html=report.html
-pytest venv/ --html-report=./report --title='PYTEST REPORT'
+robot -d Output robot_test.robot
 ```
 
