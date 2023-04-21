@@ -5,8 +5,8 @@ import math
 
 def connectdb():
     #conndb = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};Server=(localdb)\\MyInstance;Database=TRN;integrated security=true')
-    conndb = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};UID=TestDQA;PWD=Password12345;Database=TRN;Server=XPESMALW0018\\LOCALDB;Trusted_Connection=yes;')
-    #conndb = pymssql.connect(host='192.168.1.129',user='TestDQA',password="Password12345",database='TRN')#(localdb)\\MyInstance
+    #conndb = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};UID=TestDQA;PWD=Password12345;Database=TRN;Server=XPESMALW0018\\LOCALDB;Trusted_Connection=yes;')
+    conndb = pymssql.connect(server='192.168.1.129',user='TestDQA',password="TestDQA",database='TRN',port=1433)
     return conndb
 """
     AUTOTEST-001: [tablename] completeness
