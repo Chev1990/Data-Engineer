@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+
+      stage ('Git Checkout') {
+        steps {
+          git branch: 'main', url: ‘https://github.com/Chev1990/Data-Engineer.git’
+        }
+      }
+      stage('Build') {
+        steps {
+          sh 'pip install -r pytest_data/requirements.txt'
+        }
+      }
+      stage('Test') {
+        steps {
+          echo 'Testing using pytest'
+          sh 'python3 pytest_data/venv/test_data.py'
+        }
+      }
+      stage('Deploy') {
+        steps {
+         sh 'git checkout pre-prod'
+         sh 'git merge main'
+         sh 'git add .'
+         sh 'git config --global user.email "katerinachev1@gmail.com"'
+         sh 'git config --global user.name "admin"'
+         sh 'git commit -m "comment"'
+         sh 'git push'         
+        }
+      }
+      stage('Monitor') {
+     steps {
+       echo 'Well done!'
+     }
+   }
+    }    
+  }
